@@ -1,0 +1,29 @@
+{
+  "name": "",
+  "isOrdered": true,
+  "folders": {
+    "account": {
+      "name": "account",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "ec2": {
+      "name": "ec2",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    },
+    "ecs": {
+      "name": "ecs",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    }
+  },
+  "files": {
+    "LICENSE": 0,
+    "CONTRIBUTING": 1,
+    "README": 2
+  }
+}
