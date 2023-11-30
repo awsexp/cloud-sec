@@ -8,6 +8,7 @@ Disclaimer: These are only ad-hoc for use for specific issues and for a proper A
 
 - email: ben@teemops.com
 - X: https://x.com/awsexp
+- https://awscloud.substack.com/
 
 ## Pre-requsites
 

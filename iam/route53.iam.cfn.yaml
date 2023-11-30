@@ -1,0 +1,43 @@
+# Copyright [2023] [Ben Fellows]
+# License [MIT] [https://opensource.org/licenses/MIT]
+
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  This template creates an IAM role that can be assumed by the source account and allowed access from another OU to
+  update Route53 records in the destination account.
+Parameters:
+  SourceAccount:
+    Type: String
+    Description: The AWS Account ID of the source account
+  SourceOrganisation:
+    Type: String
+    Description: The Organization id
+Resources:
+  Route53AccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: Route53AccessRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS:
+                - !Ref SourceAccount
+            Action: sts:AssumeRole
+            Condition:
+              Bool:
+                aws:MultiFactorAuthPresent: true
+              StringEquals:
+                aws:PrincipalOrgID: !Ref SourceOrganisation
+      Policies:
+        - PolicyName: Route53AccessPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - route53:ChangeResourceRecordSets
+                  - route53:ListResourceRecordSets
+                  - route53:AddTagsToResource
+                Resource: "*"
